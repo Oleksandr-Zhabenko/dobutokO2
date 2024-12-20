@@ -401,3 +401,7 @@ Some minor code and documentation improvements.
 
 * Fourty-fourth version. Added github repository and bug reporting. Updated the dependencies, so that now there is aftovolio included. Some minor code improvements.
 
+## 0.44.1.0 -- 2024-12-20
+
+* Fourty-fourth version revised A. Fixed some issues with ported code.
+

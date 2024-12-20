@@ -90,7 +90,7 @@ import DobutokO.Sound.DIS5G6G
 -- 'String' structure of the uniqueness (see the documentation for @mmsyn7s@ and @uniqueness-periods@ packages) it produces the unique timbre.
 uniqOvertonesV :: Float -> String -> OvertonesO
 uniqOvertonesV note xs =
-  let ys = uniquenessPeriodsGI8 [100,101,102] . convertToProperUkrainianI8 $ xs
+  let ys = map fromIntegral . uniquenessPeriodsGI8 [100,101,102] . convertToProperUkrainianI8 $ xs :: [Int]
       z  = sum ys
       v  = V.fromList . fmap (\y -> fromIntegral y / fromIntegral z) $ ys
       z2 = V.length v
@@ -103,7 +103,7 @@ uniqOvertonesV note xs =
 -- The second 'String' is used to produce the signs for harmonics coefficients.
 uniqOvertonesV2 :: Float -> String -> String -> OvertonesO
 uniqOvertonesV2 note xs ts = 
-  let ys = uniquenessPeriodsGI8 [100,101,102] . convertToProperUkrainianI8 $ xs
+  let ys = map fromIntegral . uniquenessPeriodsGI8 [100,101,102] . convertToProperUkrainianI8 $ xs :: [Int]
       z  = sum ys
       v  = V.fromList . fmap (\y -> fromIntegral y / fromIntegral z) $ ys
       z2 = V.length v
@@ -690,3 +690,4 @@ uniqOverSoXSynthNGen4E6GSu file m ku ampL time3 dAmpl wws tts v5 vs xxs limV =
 uniqOverSoXSynthNGen4E6GSuPar :: FilePath -> Params -> Float -> Float -> Float -> String -> String -> Intervals -> String -> String -> Float -> IO ()
 uniqOverSoXSynthNGen4E6GSuPar file params ampL time3 dAmpl wws tts v5 vs xxs limV = 
  uniqOverSoXSynthNGen4E6GPar file params ampL dAmpl (str2Durations xxs time3) wws tts (intervalsFromStringG v5 vs) (str2Volume xxs) limV
+

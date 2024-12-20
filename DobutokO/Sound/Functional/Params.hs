@@ -450,8 +450,8 @@ apply6Gf vol file = soxE file ["norm","vol", showFFloat (Just 4) vol ""]
 -- | Function is used to generate a rhythm of the resulting file \'end.wav\' from the Ukrainian text and a number of sounds either in the syllables or in the words without vowels.
 syllableStr :: Int -> String -> [Int]
 syllableStr n xs =
-  let ps = map fromIntegral . take n . cycle . concat . concat . createSyllablesUkrS $ xs
-      y  = sum . map fromIntegral $ ps in
+  let ps = map fromIntegral . take n . cycle . concatMap (map length) . createSyllablesUkrS $ xs
+      y  = sum ps in
        case y of
          0 -> [0]
          _ -> y:ps  
@@ -506,7 +506,7 @@ defInt = V.fromList [12,4,7,3,4,5,5,12,3,8,12,7,10,7,7,7,12,10,7,10,2,12,2,2,11,
 -- | Generatlized version of the 'strToInt' with a possibility to specify your own 'Intervals'.
 strToIntG :: Intervals -> String -> Int
 strToIntG v =
-  getBFst' (0, listArray (0,28) . zip (["а","б","в","г","д","дж","дз","е","ж","з","и","й","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","і","ґ"]) . V.toList $ v)
+  getBFstLSorted' 0 (zip (["а","б","в","г","д","дж","дз","е","ж","з","и","й","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","і","ґ"]) . V.toList $ v)
 {-# INLINE strToIntG #-}
 
 -- | Generalized variant of the 'soundGenF31G' with a possibility to specify sound quality using the 'String' argument. For more information,

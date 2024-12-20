@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                dobutokO2
-version:             0.44.0.0
+version:             0.44.1.0
 synopsis:            Helps to create experimental music from a file (or its part) and a Ukrainian text.
 description:         It can also generate a timbre for the notes. Uses SoX inside.
 homepage:            https://hackage.haskell.org/package/dobutokO2

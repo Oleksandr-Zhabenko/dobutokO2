@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 pkgs.haskellPackages.mkDerivation {
   pname = "dobutokO2";
-  version = "0.45.1.0";
+  version = "0.45.1.1";
   src = ./.;
   isLibrary = true;
   isExecutable = true;

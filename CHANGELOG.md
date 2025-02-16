@@ -405,3 +405,7 @@ Some minor code and documentation improvements.
 
 * Fourty-fourth version revised A. Fixed some issues with ported code.
 
+## 0.45.0.0 -- 2025-02-16
+
+* Fourty-fifth version. Added new module DobutokO.Sound.Aftovolio.Ukrainian.Filter with the function that can be used for creation of the rhythmic patterns from the Ukrainian text.
+

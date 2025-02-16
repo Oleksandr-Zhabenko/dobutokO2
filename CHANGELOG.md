@@ -412,4 +412,7 @@ Some minor code and documentation improvements.
 ## 0.45.1.0 -- 2025-02-16
 
 * Fourty-fifth version revised A. Fixed issue with empty export of the module DobutokO.Sound.Aftovolio.Ukrainian.Filter.
- 
+
+ ## 0.45.1.1 -- 2025-02-16
+
+* Fourty-fifth version revised B. Fixed issues with documentation for the module DobutokO.Sound.Aftovolio.Ukrainian.Filter and case of empty last argument.

@@ -49,11 +49,11 @@ quantizeDurationsBasedOnUkrainianText
   -> [Double] -- ^ A list of 'Double' values representing quantization parameters. The resulting list will contain just the values from this list.
   -> String -- ^ A 'String' containing the Ukrainian text to be processed. This text is split into words and passed to the external executable @aftovolioUkr@.
   -> [String] -- ^ A list of additional command-line arguments (['String']) to be forwarded to the @aftovolioUkr@ executable.
-  -> [String] -- ^ A list of 'String' values representing selected line numbers or indices to influence the processing of the Ukrainian text. If empty then the whole output is used without selection. If specified in the modes without tests and file single line output changes the output so that just the lines with the specified Int numbers are displayed in the order of the specified numbers. Please, delimit the numbers with spaces. To specify some range, use just dash as here: \'34-250\' meaning that lines with numbers between 34 and 250 inclusively will be displayed. The output preverves music mode additional information as well here.
+  -> [String] -- ^ A list of 'String' values representing selected line numbers or indices to influence the processing of the Ukrainian text. If empty then the whole output is used without selection. If specified in the modes without tests and file single line output changes the output so that just the lines with the specified Int numbers are displayed in the order of the specified numbers. To specify some range, use just dash as here: \"34-250\" meaning that lines with numbers between 34 and 250 inclusively will be displayed. The output preserves music mode additional information as well here.
   -> IO [Double]
 quantizeDurationsBasedOnUkrainianText file k quants ukrstrs argss lineNumbersSels = do
     syllableDurationsDs <- readSyllableDurations file
-    (code, stdout0, strerr0) <- readProcessWithExitCode (fromJust (showE "aftovolioUkr")) (argss ++ concat [["+nm"], lineNumbersSels, ["-nm"]] ++ words ukrstrs) ""
+    (code, stdout0, strerr0) <- readProcessWithExitCode (fromJust (showE "aftovolioUkr")) (argss ++ concat [["+nm"], if null lineNumbersSels then ["1-400000"] else lineNumbersSels, ["-nm"]] ++ words ukrstrs) ""
     if code == ExitSuccess then do
         let basicDurations = map fromIntegral . read3
                         (not . null . filter (not . isSpace))

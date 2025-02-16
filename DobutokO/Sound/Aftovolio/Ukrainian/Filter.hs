@@ -13,6 +13,7 @@
 
 module DobutokO.Sound.Aftovolio.Ukrainian.Filter (
   -- * Library and executable functions
+  quantizeDurationsBasedOnUkrainianText
 ) where
 
 import System.Exit (ExitCode(..))

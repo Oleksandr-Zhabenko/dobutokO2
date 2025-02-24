@@ -53,7 +53,7 @@ quantizeDurationsBasedOnUkrainianText
   -> IO [Double]
 quantizeDurationsBasedOnUkrainianText file k quants ukrstrs argss lineNumbersSels = do
     syllableDurationsDs <- readSyllableDurations file
-    (code, stdout0, strerr0) <- readProcessWithExitCode (fromJust (showE "aftovolioUkr")) (argss ++ concat [["+nm"], if null lineNumbersSels then ["1-400000"] else lineNumbersSels, ["-nm"]] ++ words ukrstrs) ""
+    (code, stdout0, strerr0) <- readProcessWithExitCode (fromJust (showE "aftovolioUkr")) (argss ++ concat [["+nm"], if null lineNumbersSels then ["1-362880"] else lineNumbersSels, ["-nm"]] ++ words ukrstrs) ""
     if code == ExitSuccess then do
         let basicDurations = map fromIntegral . read3
                         (not . null . filter (not . isSpace))
